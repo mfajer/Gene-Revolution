@@ -16,3 +16,38 @@
 --
 -- Nicolas Casalini "DarkGod"
 -- darkgod@te4.org
+
+newEntity{
+    define_as = "BASE_MELEE_ONEHAND",
+    slot = "MAINHAND",
+    --slot_forbid = "OFFHAND",
+    type = "melee", subtype="one-handed",
+    display = "[", color=colors.SLATE,
+    encumber = 3,
+    rarity = 5,
+    combat = { sound = "actions/melee", sound_miss = "actions/melee_miss", },
+    name = "a generic body part",
+    desc = [[A one-handed melee weapon.]],
+}
+
+newEntity{ base = "BASE_MELEE_ONEHAND",
+    name = "techhammer",
+    level_range = {1, 10},
+    require = {}, --{ stat = { str=11 }, },
+    cost = 5,
+    combat = {
+        dam = 8,
+        precision = 3,
+    },
+}
+
+newEntity{ base = "BASE_MELEE_ONEHAND",
+    name = "devourer's mouth",
+    level_range = {1, 10},
+    require = {},
+    cost = 5,
+    combat = {
+        dam = 12,
+        precision = 1,
+    },
+}

@@ -25,6 +25,7 @@ require "engine.interface.ActorProject"
 require "engine.interface.ActorStats"
 require "engine.interface.ActorResource"
 require "engine.interface.ActorFOV"
+require "engine.interface.ActorInventory"
 require "mod.class.interface.Combat"
 require "mod.class.interface.AtomicEffects"
 require "mod.class.interface.ActorTalents"
@@ -37,6 +38,7 @@ module(..., package.seeall, class.inherit(
 	engine.interface.ActorStats,
 	engine.interface.ActorResource,
 	engine.interface.ActorFOV,
+	engine.interface.ActorInventory,
 	mod.class.interface.Combat,
 	mod.class.interface.AtomicEffects,
 	mod.class.interface.ActorTalents
@@ -44,6 +46,7 @@ module(..., package.seeall, class.inherit(
 
 function _M:init(t, no_default)
 	-- Define some basic combat stats
+	t.size = 25 -- 25 is the "humanoid" reference size, used in combat accuracy calculations
 
 	-- Default regen
 	t.life_regen = t.life_regen or 0.25 -- Life regen real slow
@@ -57,6 +60,7 @@ function _M:init(t, no_default)
 	engine.interface.ActorResource.init(self, t)
 	engine.interface.ActorStats.init(self, t)
 	engine.interface.ActorFOV.init(self, t)
+	engine.interface.ActorInventory.init(self, t)
 	mod.class.interface.AtomicEffects.init(self, t)
 	mod.class.interface.ActorTalents.init(self, t)
 
